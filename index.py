@@ -57,6 +57,7 @@ def calculate_similarity(extracted_text, reference_text):
     similarity_score = sum(1 for a, b in zip(extracted_text[:min_length], reference_text[:min_length]) if a == b) / len(reference_text)
     return similarity_score * 100
 
+
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
     if 'audio' not in request.files or 'referenceText' not in request.form:
@@ -85,6 +86,7 @@ def process_audio():
         # Save uploaded file
         audio_file.save(temp_filepath)
         print(f"Saved uploaded file to {temp_filepath}, size: {os.path.getsize(temp_filepath)} bytes")
+
         
         # Load the audio and get its properties
         try:
